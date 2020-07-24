@@ -2,15 +2,6 @@ package com.timekeep.timekeeping.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-<<<<<<< HEAD
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-@Entity
-public class Admin {
-    @Id
-    private int id;
-=======
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +15,6 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
->>>>>>> add files
 
     @Column
     private String username;
@@ -33,29 +23,18 @@ public class Admin {
     private String password;
 
     @ManyToOne
-<<<<<<< HEAD
-=======
     @JoinColumn(name = "role_id")
->>>>>>> add files
     private Role role;
 
 
     public Admin() {
     }
 
-<<<<<<< HEAD
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-=======
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
->>>>>>> add files
         this.id = id;
     }
 

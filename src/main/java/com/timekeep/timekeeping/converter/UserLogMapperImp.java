@@ -1,16 +1,12 @@
 package com.timekeep.timekeeping.converter;
+import java.util.List;
 
-<<<<<<< HEAD
-import com.timekeep.timekeeping.dto.UserLogDto;
-=======
+import org.springframework.stereotype.Component;
+
 import com.timekeep.timekeeping.dto.UserDto;
 import com.timekeep.timekeeping.dto.UserLogDto;
 import com.timekeep.timekeeping.entity.User;
->>>>>>> add files
 import com.timekeep.timekeeping.entity.UserLog;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class UserLogMapperImp implements UserLogMapper {
@@ -18,38 +14,25 @@ public class UserLogMapperImp implements UserLogMapper {
     public UserLog toEntity(UserLogDto dto) {
         UserLog userLog = new UserLog();
         userLog.setDate(dto.getDate());
-<<<<<<< HEAD
-
-
-=======
-        
->>>>>>> add files
         return userLog;
     }
 
     @Override
     public UserLogDto toDTO(UserLog entity) {
         UserLogDto userLogDto = new UserLogDto();
-<<<<<<< HEAD
-        userLogDto.setDate(entity.getDate());
-        userLogDto.setId(entity.getId());
-        userLogDto.setUserCode(entity.getUser().getCode());
-
-        return userLogDto;
-    }
-
-=======
+//        userLogDto.setDate(entity.getDate());
+//        userLogDto.setId(entity.getId());
+        
         if(entity.getId() != null) {
         	 userLogDto.setId(entity.getId());
         }
         userLogDto.setDate(entity.getDate());
        
        // userLogDto.setUserCode(entity.getUser().getCode());
-
+       // userLogDto.setUserCode(entity.getUser().getCode());
         return userLogDto;
     }
     
->>>>>>> add files
     @Override
     public List<UserLog> toEntity(List<UserLogDto> dtoList) {
         return null;
@@ -59,8 +42,6 @@ public class UserLogMapperImp implements UserLogMapper {
     public List<UserLogDto> toDto(List<UserLog> entityList) {
         return null;
     }
-<<<<<<< HEAD
-=======
 
 	@Override
 	public UserLog toEntity(UserLogDto dto, UserLog entity) {
@@ -95,6 +76,4 @@ public class UserLogMapperImp implements UserLogMapper {
 		return user;
 	}
 
-	
->>>>>>> add files
 }

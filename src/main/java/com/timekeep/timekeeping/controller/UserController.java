@@ -1,18 +1,6 @@
 package com.timekeep.timekeeping.controller;
 
-<<<<<<< HEAD
-import com.timekeep.timekeeping.entity.User;
-import com.timekeep.timekeeping.repository.UserRepository;
-import com.timekeep.timekeeping.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-=======
-import com.timekeep.timekeeping.dto.UserDto;
-import com.timekeep.timekeeping.entity.User;
-import com.timekeep.timekeeping.repository.UserRepository;
-import com.timekeep.timekeeping.service.impl.UserService;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,30 +11,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
->>>>>>> add files
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.timekeep.timekeeping.dto.UserDto;
+import com.timekeep.timekeeping.entity.User;
+import com.timekeep.timekeeping.service.impl.UserService;
 
 @RestController
-<<<<<<< HEAD
 @RequestMapping("/api/")
-=======
->>>>>>> add files
 public class UserController {
 
 
     @Autowired
     UserService userService;
 
-<<<<<<< HEAD
     @GetMapping("users")
     public ResponseEntity<List<User>> getAllUser() {
         return new ResponseEntity<>(userService.findAllUser(), HttpStatus.OK);
     }
 
-=======
 //    @GetMapping("users")
 //    public ResponseEntity<List<User>> getAllUser() {
 //        return new ResponseEntity<>(userService.findAllUser(), HttpStatus.OK);
@@ -65,5 +49,4 @@ public class UserController {
     public void deleteUser(@RequestBody long[] ids) {
     	userService.delete(ids);
     }
->>>>>>> add files
 }

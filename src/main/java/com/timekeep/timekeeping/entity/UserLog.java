@@ -15,10 +15,7 @@ public class UserLog {
     private Date date;
 
     @ManyToOne
-<<<<<<< HEAD
-=======
     @JoinColumn(name = "user_id")
->>>>>>> add files
     private User user;
 
     public UserLog() {

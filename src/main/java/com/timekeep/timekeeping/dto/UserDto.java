@@ -4,12 +4,6 @@ package com.timekeep.timekeeping.dto;
 import java.io.Serializable;
 
 public class UserDto implements Serializable {
-<<<<<<< HEAD
-
-=======
-//	private Long id;
-	
->>>>>>> add files
     private Long code;
 
     private String name;
@@ -20,30 +14,12 @@ public class UserDto implements Serializable {
     }
 
     public UserDto(Long code, String name, String role) {
-<<<<<<< HEAD
-=======
-    	//this.id = id;
->>>>>>> add files
         this.code = code;
         this.name = name;
         this.role = role;
     }
-<<<<<<< HEAD
-
-    public Long getCode() {
-=======
-    
-    
-//    public Long getId() {
-//		return id;
-//	}
-//
-//	public void setId(Long id) {
-//		this.id = id;
-//	}
 
 	public Long getCode() {
->>>>>>> add files
         return code;
     }
 

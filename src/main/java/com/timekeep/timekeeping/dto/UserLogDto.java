@@ -4,12 +4,7 @@ package com.timekeep.timekeeping.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-<<<<<<< HEAD
 public class UserLogDto implements Serializable {
-=======
-public class UserLogDto  {
->>>>>>> add files
-
     private Long id;
 
     private Date date;

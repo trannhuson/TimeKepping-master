@@ -1,20 +1,5 @@
 package com.timekeep.timekeeping.controller;
-
-<<<<<<< HEAD
-import com.timekeep.timekeeping.dto.UserLogDto;
-import com.timekeep.timekeeping.entity.UserLog;
-import com.timekeep.timekeeping.service.UserLogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-@RestController
-@RequestMapping("/api/")
-public class UserLogController {
-
-=======
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.timekeep.timekeeping.controller.output.UserLogOutput;
 import com.timekeep.timekeeping.dto.UserLogDto;
+import com.timekeep.timekeeping.entity.UserLog;
 import com.timekeep.timekeeping.service.impl.UserLogService;
 import com.timekeep.timekeeping.service.impl.UserService;
 
@@ -38,19 +24,15 @@ public class UserLogController {
 	@Autowired
 	UserService userService;
 	
->>>>>>> add files
     @Autowired
     UserLogService userLogService;
 
-
-<<<<<<< HEAD
     @PostMapping("userlog")
     public UserLog getUserLog(@RequestBody UserLogDto userLogDto) {
 
         return userLogService.createUserLog(userLogDto);
     }
 
-=======
 	/*
 	 * @PostMapping("userlog") public UserLog getUserLog(@RequestBody UserLogDto
 	 * userLogDto) {
@@ -78,7 +60,6 @@ public class UserLogController {
     	//result.setListUserLog(userLogService.findAll(page));
     	return null;
     }
-    
->>>>>>> add files
+   
 
 }
