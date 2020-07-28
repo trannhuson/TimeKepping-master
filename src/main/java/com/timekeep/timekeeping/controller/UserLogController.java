@@ -1,5 +1,7 @@
 package com.timekeep.timekeeping.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,49 +19,51 @@ import com.timekeep.timekeeping.entity.UserLog;
 import com.timekeep.timekeeping.service.impl.UserLogService;
 import com.timekeep.timekeeping.service.impl.UserService;
 
-@CrossOrigin
+import java.util.Date;
+
+@CrossOrigin("*")
 @RestController
-//@RequestMapping("/api/")
+@RequestMapping("/api")
 public class UserLogController {
-	@Autowired
-	UserService userService;
-	
+    @Autowired
+    UserService userService;
+
     @Autowired
     UserLogService userLogService;
 
-    @PostMapping("userlog")
-    public UserLog getUserLog(@RequestBody UserLogDto userLogDto) {
-
-        return userLogService.createUserLog(userLogDto);
-    }
-
-	/*
-	 * @PostMapping("userlog") public UserLog getUserLog(@RequestBody UserLogDto
-	 * userLogDto) {
-	 * 
-	 * return userLogService.createUserLog(userLogDto); }
-	 */
-    @PostMapping(value="/addUserLog")
+    /*
+     * @PostMapping("userlog") public UserLog getUserLog(@RequestBody UserLogDto
+     * userLogDto) {
+     *
+     * return userLogService.createUserLog(userLogDto); }
+     */
+    @PostMapping(value = "/addUserLog",consumes = MediaType.APPLICATION_JSON_VALUE)
     public UserLogDto createUserLogDto(@RequestBody UserLogDto model) {
-    	return userLogService.addUserLog(model);
+        model.setDate(new Date());
+
+        return userLogService.addUserLog(model);
     }
-    @PutMapping(value="/updateUserLog/{id}")
-    public UserLogDto updateUserLogDto(@RequestBody UserLogDto model,@PathVariable("id") long id) {
-    	model.setId(id);
-    	return userLogService.updateUserLog(model);
+
+
+    @PutMapping(value = "/updateUserLog/{id}")
+    public UserLogDto updateUserLogDto(@RequestBody UserLogDto model, @PathVariable("id") long id) {
+        model.setId(id);
+        return userLogService.updateUserLog(model);
     }
-    @DeleteMapping(value="/deleteUserLog")
+
+    @DeleteMapping(value = "/deleteUserLog")
     public void deleteUserLog(@RequestBody long[] ids) {
-    	userLogService.deleteUserLog(ids);
+        userLogService.deleteUserLog(ids);
     }
-    @GetMapping(value="/getUserLog")
-    public UserLogOutput showUserLog(@RequestParam("page") int page,@RequestParam("limit") int limit) {
-    	UserLogOutput result = new UserLogOutput();
-    	result.setPage(page);
-    	//Pageable pageable = new PageRequest(page-1,limit);
-    	//result.setListUserLog(userLogService.findAll(page));
-    	return null;
+
+    @GetMapping(value = "/getUserLog")
+    public UserLogOutput showUserLog(@RequestParam("page") int page, @RequestParam(required = false,name = "limit") int limit) {
+        UserLogOutput result = new UserLogOutput();
+        result.setPage(page);
+        //Pageable pageable = new PageRequest(page-1,limit);
+        //result.setListUserLog(userLogService.findAll(page));
+        return null;
     }
-   
+
 
 }

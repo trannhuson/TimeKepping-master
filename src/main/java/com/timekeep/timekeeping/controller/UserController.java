@@ -19,7 +19,7 @@ import com.timekeep.timekeeping.entity.User;
 import com.timekeep.timekeeping.service.impl.UserService;
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class UserController {
 
 
@@ -49,4 +49,5 @@ public class UserController {
     public void deleteUser(@RequestBody long[] ids) {
     	userService.delete(ids);
     }
+    
 }

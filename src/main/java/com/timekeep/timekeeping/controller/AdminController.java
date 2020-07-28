@@ -1,21 +1,18 @@
 package com.timekeep.timekeeping.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.timekeep.timekeeping.dto.AdminDto;
 import com.timekeep.timekeeping.service.impl.AdminService;
 
 @RestController
+@CrossOrigin("*")
+@RequestMapping("/api")
 public class AdminController {
 	@Autowired
 	AdminService adminService;
-	
+
 	@PostMapping("/addAdmin")
 	public AdminDto addAdmin(@RequestBody AdminDto adminDto) {
 		return adminService.addAdmin(adminDto);
@@ -29,4 +26,7 @@ public class AdminController {
 	public void delete(@RequestBody long [] ids) {
 		adminService.deleteAdmin(ids);
 	}
+
+
+
 }	

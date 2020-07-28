@@ -5,7 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.timekeep.timekeeping.entity.Role;
 
+import java.util.Optional;
+
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
-	Role findFirstByName(String role);
+    Role findFirstByName(String role);
+
+    Optional<Role> findByNameContaining(String name);
 }

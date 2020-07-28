@@ -10,9 +10,13 @@ import com.timekeep.timekeeping.entity.UserLog;
 
 @Component
 public class UserLogMapperImp implements UserLogMapper {
+
     @Override
     public UserLog toEntity(UserLogDto dto) {
         UserLog userLog = new UserLog();
+
+
+
         userLog.setDate(dto.getDate());
         return userLog;
     }
@@ -26,8 +30,8 @@ public class UserLogMapperImp implements UserLogMapper {
         if(entity.getId() != null) {
         	 userLogDto.setId(entity.getId());
         }
+        userLogDto.setUserCode(entity.getUser().getCode());
         userLogDto.setDate(entity.getDate());
-       
        // userLogDto.setUserCode(entity.getUser().getCode());
        // userLogDto.setUserCode(entity.getUser().getCode());
         return userLogDto;

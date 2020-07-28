@@ -24,6 +24,7 @@ public class AdminConverter implements AdminConverterImpl{
 		}
 		adminDto.setPassword(adminEntity.getPassword());
 		adminDto.setUsername(adminEntity.getUsername());
+		adminDto.setRole(adminEntity.getRole().getName());
 		return adminDto;
 	}
 
