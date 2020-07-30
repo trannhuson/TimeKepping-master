@@ -2,6 +2,8 @@ package com.timekeep.timekeeping.service;
 
 import java.util.List;
 
+import com.timekeep.timekeeping.dto.temp.TotalDayDTO;
+import com.timekeep.timekeeping.entity.TotalDay;
 import org.springframework.data.domain.Pageable;
 
 import com.timekeep.timekeeping.dto.UserLogDto;
@@ -13,4 +15,6 @@ public interface UserLogServiceImpl {
 	void deleteUserLog(long []  ids);
 	List<UserLogDto> findAll(Long id);
 	int totalItem();
+//	TotalDayDTO cacleDate(Long code, int thang);
+//	List<TotalDayDTO> cacleDate(int month);
 }

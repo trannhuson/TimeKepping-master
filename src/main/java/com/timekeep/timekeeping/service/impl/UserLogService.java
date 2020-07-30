@@ -1,9 +1,13 @@
 package com.timekeep.timekeeping.service.impl;
 
+import com.timekeep.timekeeping.converter.TotalConverter;
 import com.timekeep.timekeeping.converter.UserLogMapperImp;
 import com.timekeep.timekeeping.dto.UserLogDto;
+import com.timekeep.timekeeping.dto.temp.TotalDayDTO;
+import com.timekeep.timekeeping.entity.TotalDay;
 import com.timekeep.timekeeping.entity.User;
 import com.timekeep.timekeeping.entity.UserLog;
+import com.timekeep.timekeeping.repository.TotalDayRepository;
 import com.timekeep.timekeeping.repository.UserLogRepository;
 import com.timekeep.timekeeping.repository.UserRepository;
 import com.timekeep.timekeeping.service.UserLogServiceImpl;
@@ -28,6 +32,12 @@ public class UserLogService implements UserLogServiceImpl {
     @Autowired
     UserLogMapperImp userLogMapperImp;
 
+    @Autowired
+    TotalConverter totalConverter;
+
+    @Autowired
+    TotalDayRepository totalDayRepository;
+
     @Override
     public UserLogDto addUserLog(UserLogDto userLogDto) {
         User users = userRepository.findFistByCode(userLogDto.getUserCode());
@@ -35,10 +45,6 @@ public class UserLogService implements UserLogServiceImpl {
         userLog.setUser(users);
         userLog = userLogRepository.save(userLog);
         return userLogMapperImp.toDTO(userLog);
-    }
-
-    public UserLog createUserLog(UserLogDto userLogDto) {
-        return null;
     }
 
     @Override
@@ -78,6 +84,35 @@ public class UserLogService implements UserLogServiceImpl {
     public int totalItem() {
         return (int) userLogRepository.count();
     }
+
+//    @Override
+//    public List<TotalDayDTO> cacleDate(int month) {
+////        TotalDayDTO totalDayDTO = userLogRepository.findUserLogByUserIdAndDate(code)
+////                .stream()
+////                .filter(totalDay -> totalDay.getMonth() == month)
+////                .findFirst().orElse(null);
+////
+////
+////        return totalConverter.toDTO(totalDayDTO);//userLogMapperImp.calcDateUserLog(userLog);
+//        List<TotalDayDTO> listdto = new ArrayList<>();
+//        List<TotalDay> total = totalDayRepository.findToalDayByDate(month);
+//
+////        total.forEach(
+////                (entity)->{
+////                    listdto.add(totalConverter.toDTO(entity));
+////                    totalDayRepository.save(entity);
+////                }
+////        );
+//        for(TotalDay totalDay: total){
+//            listdto.add(totalConverter.toDTO(totalDay));
+//            totalDay.setMonth(month);
+//            totalDay = totalDayRepository.save(totalDay);
+//        }
+//
+//    return listdto;
+//
+//
+//    }
 
 
 }

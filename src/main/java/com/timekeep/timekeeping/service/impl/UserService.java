@@ -36,7 +36,9 @@ public class UserService implements INewService{
     	Role role = roleRepository.findFirstByName(userDto.getRole());
     	User user = userLogMapperImp.toUserEntity(userDto); 
     	user.setRole(role);
+
     	user = userRepositorys.save(user);
+
     	return userLogMapperImp.toUserDTO(user);
     }
     public List<User> findAllUser() {

@@ -22,28 +22,28 @@ public class JwtTokenUtil implements Serializable {
     @Value("${jwt.secret}")
     private String secret;
 
-    //retrieve username from jwt token
+    //lấy tên người dùng từ jwt token
     public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
-    //retrieve expiration date from jwt token
+    //lấy ngày hết hạn từ jwt token
     public Date getExpirationDateFromToken(String token) {
         return getClaimFromToken(token, Claims::getExpiration);
     }
 
     public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
+       // getClaimsFromToken ta sẽ lấy ra JWTClaimsSet, trong đây phải có đúng chuỗi SECRET đã tạo ra token mới lấy ra được JWTClaimsSet.
         final Claims claims = getAllClaimsFromToken(token);
         return claimsResolver.apply(claims);
     }
 
-
-    //for retrieveing any information from token we will need the secret key
     private Claims getAllClaimsFromToken(String token) {
+        // Lấy secret
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
 
-    //check if the token has expired
+    // kiểm tra xem token đã hết hạn chưa
     private Boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
@@ -51,6 +51,7 @@ public class JwtTokenUtil implements Serializable {
 
     //generate token for user
     public String generateToken(UserDetails userDetails) {
+        // tạo mã token cho người dùng
         Map<String, Object> claims = new HashMap<>();
         return doGenerateToken(claims, userDetails.getUsername());
     }

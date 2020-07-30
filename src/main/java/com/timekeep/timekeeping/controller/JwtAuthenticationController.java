@@ -37,7 +37,8 @@ public class JwtAuthenticationController {
         responseHeaders.set("Authorization", "Bearer " + token);
         return ResponseEntity.ok().headers(responseHeaders).body(token);
     }
-
+//    @RequestMapping(value = "/logout",method = RequestMethod.POST)
+//    public Res
     @RequestMapping("/greeting")
     public String greetingHello() {
         return "greeting";

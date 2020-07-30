@@ -1,5 +1,7 @@
 package com.timekeep.timekeeping.controller;
 
+import com.timekeep.timekeeping.dto.temp.TotalDayDTO;
+import com.timekeep.timekeeping.entity.TotalDay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,7 +21,9 @@ import com.timekeep.timekeeping.entity.UserLog;
 import com.timekeep.timekeeping.service.impl.UserLogService;
 import com.timekeep.timekeeping.service.impl.UserService;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
@@ -59,6 +63,7 @@ public class UserLogController {
     @GetMapping(value = "/getUserLog")
     public UserLogOutput showUserLog(@RequestParam("page") int page, @RequestParam(required = false,name = "limit") int limit) {
         UserLogOutput result = new UserLogOutput();
+
         result.setPage(page);
         //Pageable pageable = new PageRequest(page-1,limit);
         //result.setListUserLog(userLogService.findAll(page));

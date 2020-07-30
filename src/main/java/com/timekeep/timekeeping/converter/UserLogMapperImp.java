@@ -59,6 +59,7 @@ public class UserLogMapperImp implements UserLogMapper {
 		User user = new User();
 		user.setName(dto.getName());
 		user.setCode(dto.getCode());
+	//	user.setRole();
 		return user;
 	}
 	
@@ -70,6 +71,7 @@ public class UserLogMapperImp implements UserLogMapper {
 	//	}
 	//	userDto.setCode(entity.getCode());
 		userDto.setName(entity.getName());
+		userDto.setRole(entity.getRole().getName());
 		return userDto;
 	}
 
@@ -79,5 +81,11 @@ public class UserLogMapperImp implements UserLogMapper {
 		user.setName(userDto.getName());
 		return user;
 	}
+	public UserLogDto calcDateUserLog(UserLog entity){
+        UserLogDto userLogDto = new UserLogDto();
+       // userLogDto.setId(entity.getId());
+        userLogDto.setUserCode(entity.getUser().getCode());
+        return userLogDto;
+    }
 
 }
